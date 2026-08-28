@@ -1,0 +1,13 @@
+[project]
+name = "tasks-notes-mcp-client"
+version = "0.1.0"
+description = "Tasks-Notes Agent using Google ADK with remote tasks-notes MCP server"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "google-adk>=0.1.0",
+    "google-generativeai>=0.8.0",
+    "mcp>=1.17.0",
+    "python-dotenv>=1.1.1",
+    "httpx>=0.28.1",
+]

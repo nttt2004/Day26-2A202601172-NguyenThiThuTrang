@@ -3,7 +3,12 @@ __pycache__/
 *.pyc
 venv/
 .env
+**/.env
 **/.venv
 .adk/
 *.db
 **/.DS_Store
+
+# tasks-notes: dữ liệu do server sinh ra khi chạy (giữ lại .gitkeep)
+05-tasks-notes/data/items/*.md
+!05-tasks-notes/data/items/.gitkeep
