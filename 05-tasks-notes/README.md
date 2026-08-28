@@ -67,7 +67,7 @@ mở `data/items/` sẽ thấy các file `.md` mới được tạo.
 
 ```bash
 # dùng đường dẫn tuyệt đối tới server.py
-claude mcp add tasks-notes -- python /home/minhhieuano/2222/workspace/ai_in_action/Day26-MCP-Tools-Integration-minhhieu/05-tasks-notes/server.py
+claude mcp add tasks-notes -- python e:\Day26-2A202601172-NguyenThiThuTrang\05-tasks-notes\server.py
 
 # kiểm tra
 claude mcp list
@@ -188,7 +188,7 @@ python test_client_v2.py     # tự khởi động server_v2.py
 ### Đăng ký vào Claude Code
 
 ```bash
-claude mcp add tasks-notes-v2 -- python /home/minhhieuano/2222/workspace/ai_in_action/Day26-MCP-Tools-Integration-minhhieu/05-tasks-notes/server_v2.py
+claude mcp add tasks-notes-v2 -- python e:\Day26-2A202601172-NguyenThiThuTrang\05-tasks-notes\server_v2.py
 ```
 
 ## Bài 2b — ADK client (`mcp-client/`)
@@ -197,12 +197,14 @@ Agent Google ADK làm MCP Client tới `server_http.py`. Xem `mcp-client/README.
 Đổi so với 04-lab: package `weather_agent` → `tasks_notes_agent`, tool weather →
 `tasks-notes`, thêm biến `GEMINI_MODEL`, `TASKS_NOTES_TOKEN`, `MCP_SERVER_URL`.
 
-```bash
-cd 05-tasks-notes/mcp-client
-cp .env.example .env      # điền GOOGLE_API_KEY
-uv sync
-python server ...         # (chạy server_http.py ở terminal khác trước)
-uv run adk web
+```powershell
+cd 05-tasks-notes\mcp-client
+copy .env.example .env    # điền GOOGLE_API_KEY
+python -m venv .venv      # venv RIÊNG: google-adk cần mcp 1.x
+.\.venv\Scripts\Activate.ps1
+pip install "google-adk" "mcp<2" python-dotenv httpx
+# (chạy server_http.py ở terminal khác, bằng python global)
+adk web
 ```
 
 ## Ghi chú triển khai

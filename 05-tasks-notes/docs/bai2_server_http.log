@@ -1,0 +1,25 @@
+INFO:     Started server process [1864]
+INFO:     Waiting for application startup.
+[08/29/26 00:16:23] INFO     StreamableHTTP      streamable_http_manager.py:148
+                             session manager                                   
+                             started                                           
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8090 (Press CTRL+C to quit)
+[08/29/26 00:16:29] INFO     Created new         streamable_http_manager.py:300
+                             transport with                                    
+                             session ID:                                       
+                             65a6f3c18dea459690b                               
+                             50878ee6e8126                                     
+tasks-notes HTTP MCP server -> http://127.0.0.1:8090/mcp
+   token dev hop le: dev-token-abc123
+INFO:     127.0.0.1:61080 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61081 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:61082 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61083 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61084 - "POST /mcp HTTP/1.1" 200 OK
+                    INFO     Terminating session:        streamable_http.py:814
+                             65a6f3c18dea459690b50878ee6                       
+                             e8126                                             
+INFO:     127.0.0.1:61085 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61086 - "POST /mcp HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:61087 - "POST /mcp HTTP/1.1" 401 Unauthorized

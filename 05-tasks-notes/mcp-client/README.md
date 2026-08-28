@@ -16,22 +16,29 @@ Browser :8000 ──> adk web ──> tasks_notes_agent (Gemini)
 
 ## Setup
 
-```bash
-cd 05-tasks-notes/mcp-client
-cp .env.example .env          # rồi điền GOOGLE_API_KEY thật
-uv sync                       # hoặc: pip install -e .
+> ⚠️ `google-adk` yêu cầu `mcp` **1.x**, còn các server của lab dùng `mcp` **2.x**.
+> Vì vậy client chạy ở **venv riêng**; server chạy bằng python global.
+
+```powershell
+cd 05-tasks-notes\mcp-client
+copy .env.example .env         # rồi điền GOOGLE_API_KEY thật
+
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install "google-adk" "mcp<2" python-dotenv httpx
 python verify_setup.py
 ```
 
 ## Chạy
 
-```bash
-# terminal 1 — MCP server (từ 05-tasks-notes/)
+```powershell
+# terminal 1 — MCP server (từ 05-tasks-notes/, python global mcp 2.x)
 python server_http.py
 
-# terminal 2 — ADK web
-cd mcp-client
-uv run adk web
+# terminal 2 — ADK web (venv của client)
+cd 05-tasks-notes\mcp-client
+.\.venv\Scripts\Activate.ps1
+adk web
 ```
 
 Mở http://localhost:8000, chọn `tasks_notes_agent`, thử:

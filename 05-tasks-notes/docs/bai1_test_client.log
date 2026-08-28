@@ -1,0 +1,70 @@
+Tools server công bố (khám phá tại runtime):
+  - capture_item: Tạo mới một task hoặc note và lưu thành file Markdown.
+  - list_items: Đọc lại danh sách task/note đã lưu (đọc thật từ file Markdown).
+  - ping: Kiểm tra server còn sống.
+
+[ping]
+ -> pong — tasks-notes MCP server is alive
+
+[capture_item] task
+{
+  "id": "task-20260829-001550",
+  "type": "task",
+  "status": "open",
+  "tags": [
+    "mcp",
+    "lab"
+  ],
+  "created_at": "2026-08-29T00:15:50+07:00",
+  "path": "data/items/task-20260829-001550.md"
+}
+
+[capture_item] note
+{
+  "id": "note-20260829-001550",
+  "type": "note",
+  "status": "captured",
+  "tags": [
+    "mcp",
+    "bug"
+  ],
+  "created_at": "2026-08-29T00:15:50+07:00",
+  "path": "data/items/note-20260829-001550.md"
+}
+
+[list_items] tất cả
+{
+  "id": "task-20260829-001550",
+  "type": "task",
+  "status": "open",
+  "tags": [
+    "mcp",
+    "lab"
+  ],
+  "created_at": "2026-08-29T00:15:50+07:00",
+  "content": "Hoàn thành MCP Server hybrid Task/Notes cho Day26 lab"
+}
+{
+  "id": "note-20260829-001550",
+  "type": "note",
+  "status": "captured",
+  "tags": [
+    "mcp",
+    "bug"
+  ],
+  "created_at": "2026-08-29T00:15:50+07:00",
+  "content": "Nhớ: mcp 2.x đổi FastMCP -> MCPServer"
+}
+
+[list_items] type=note tag=bug
+{
+  "id": "note-20260829-001550",
+  "type": "note",
+  "status": "captured",
+  "tags": [
+    "mcp",
+    "bug"
+  ],
+  "created_at": "2026-08-29T00:15:50+07:00",
+  "content": "Nhớ: mcp 2.x đổi FastMCP -> MCPServer"
+}

@@ -1,0 +1,85 @@
+=== resource server://info ===
+{
+  "name": "tasks-notes",
+  "server_version": "2.0.0",
+  "tools": {
+    "capture_item": {
+      "version": "1.0",
+      "deprecated": false
+    },
+    "list_items": {
+      "version": "1.0",
+      "deprecated": true,
+      "replacement": "list_items_v2"
+    },
+    "capture_item_v2": {
+      "version": "2.0",
+      "deprecated": false
+    },
+    "list_items_v2": {
+      "version": "2.0",
+      "deprecated": false
+    }
+  },
+  "capabilities": [
+    "markdown-storage",
+    "tags",
+    "filtering",
+    "versioning"
+  ]
+}
+
+=== list_tools ===
+  - capture_item: [v1.0] Tạo task/note. Trả text ngắn.
+  - list_items: [v1.0 - DEPRECATED, dùng list_items_v2] Liệt kê task/note, trả text từng dòng.
+  - capture_item_v2: [v2.0] Tạo task/note. Trả JSON đầy đủ metadata.
+  - list_items_v2: [v2.0] Liệt kê task/note. Trả JSON gồm filters đã áp, count, mảng items chi tiết.
+  - ping: Kiểm tra server còn sống.
+
+⚠️  'list_items' deprecated -> nên dùng 'list_items_v2'
+
+=== [v1] capture_item ===
+Đã tạo task task-20260829-001554 #v1 → data/items/task-20260829-001554.md
+
+=== [v1] list_items ===
+- [task] task-20260829-001554 (open) #v1  Client cũ vẫn gọi v1
+- [task] task-20260829-001550 (open) #mcp #lab  Hoàn thành MCP Server hybrid Task/Notes cho Day26 lab
+- [note] note-20260829-001550 (captured) #mcp #bug  Nhớ: mcp 2.x đổi FastMCP -> MCPServer
+
+=== [v2] capture_item_v2 ===
+{
+  "api_version": "2.0",
+  "id": "note-20260829-001554",
+  "type": "note",
+  "status": "captured",
+  "tags": [
+    "v2",
+    "mcp"
+  ],
+  "created_at": "2026-08-29T00:15:54+07:00",
+  "path": "data/items/note-20260829-001554.md"
+}
+
+=== [v2] list_items_v2 (tag=v2) ===
+{
+  "api_version": "2.0",
+  "filters": {
+    "type": null,
+    "tag": "v2",
+    "limit": null
+  },
+  "count": 1,
+  "items": [
+    {
+      "id": "note-20260829-001554",
+      "type": "note",
+      "status": "captured",
+      "tags": [
+        "v2",
+        "mcp"
+      ],
+      "created_at": "2026-08-29T00:15:54+07:00",
+      "content": "Client mới lấy JSON qua v2"
+    }
+  ]
+}

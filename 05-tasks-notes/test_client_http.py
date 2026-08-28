@@ -31,6 +31,13 @@ URL = os.getenv("MCP_SERVER_URL", "http://127.0.0.1:8090/mcp")
 GOOD_TOKEN = os.getenv("TASKS_NOTES_TOKEN", "dev-token-abc123")
 
 
+def _flatten(exc: BaseException) -> str:
+    """Lấy thông điệp lỗi lá (bỏ lớp ExceptionGroup/TaskGroup) để in cho gọn."""
+    if isinstance(exc, BaseExceptionGroup):
+        return " | ".join(_flatten(e) for e in exc.exceptions)
+    return f"{type(exc).__name__}: {exc}"
+
+
 def _dump(result) -> str:
     if getattr(result, "structuredContent", None):
         return json.dumps(result.structuredContent, ensure_ascii=False, indent=2)
@@ -68,14 +75,14 @@ async def main() -> None:
         await run_session("wrong-token-000")
         print("  ❌ Không mong đợi: server lẽ ra phải từ chối")
     except Exception as e:  # noqa: BLE001
-        print(f"  ✅ Bị từ chối như mong đợi: {type(e).__name__}: {e}")
+        print(f"  ✅ Bị từ chối như mong đợi: {_flatten(e)}")
 
     print("\n=== 3. Thiếu token ===")
     try:
         await run_session(None)
         print("  ❌ Không mong đợi: server lẽ ra phải từ chối")
     except Exception as e:  # noqa: BLE001
-        print(f"  ✅ Bị từ chối như mong đợi: {type(e).__name__}: {e}")
+        print(f"  ✅ Bị từ chối như mong đợi: {_flatten(e)}")
 
 
 if __name__ == "__main__":

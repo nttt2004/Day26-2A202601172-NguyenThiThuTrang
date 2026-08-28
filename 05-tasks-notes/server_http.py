@@ -15,6 +15,12 @@ Env:
 from __future__ import annotations
 
 import os
+import sys
+
+try:  # console Windows mặc định cp1252
+    sys.stdout.reconfigure(encoding="utf-8")
+except Exception:
+    pass
 
 from mcp.server.auth.provider import AccessToken, TokenVerifier
 from mcp.server.auth.settings import AuthSettings
@@ -60,6 +66,6 @@ register_core_tools(mcp)
 
 
 if __name__ == "__main__":
-    print(f"🚀 tasks-notes HTTP MCP server -> {PUBLIC_URL}/mcp")
-    print(f"   token dev hợp lệ: {DEV_TOKEN}")
+    print(f"tasks-notes HTTP MCP server -> {PUBLIC_URL}/mcp")
+    print(f"   token dev hop le: {DEV_TOKEN}")
     mcp.run("streamable-http", host=HOST, port=PORT, streamable_http_path="/mcp")
